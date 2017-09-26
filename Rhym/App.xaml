@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Rhym.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#F25A0F</Color>
+            <Color x:Key="LightBlueColor">#3277b4</Color>
+            <x:Double x:Key="BaseFontSize">16</x:Double>
+            <x:Double x:Key="BaseButtonHeight">44</x:Double>
+            
+            <Style x:Key="MainButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" 
+                            Android="50" 
+                            iOS="35" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="6" />
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBlueColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource LightBlueColor}" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style x:Key="SmallButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" 
+                            Android="40" 
+                            iOS="35" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+            <Style x:Key="SmallLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+            <Style x:Key="CustomEntry" TargetType="Entry">
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                            Android="40"
+                            iOS="35" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

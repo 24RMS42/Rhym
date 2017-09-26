@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Rhym.PlayListPage">
+    <StackLayout 
+        Orientation="Vertical" Padding="10" Spacing="10" >
+        <ListView  x:Name="listView" ItemTapped="OnItemSelected" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+						<StackLayout Orientation="Horizontal">
+    						<Image Source="{Binding CheckImage}" WidthRequest="25" />
+                            <StackLayout Orientation="Vertical" Padding="5">
+                                <Label x:Name="SongTitleLbl" Text="{Binding SongName}" FontSize="16" />
+                                <Label x:Name="ArtistNameLbl" Text="{Binding ArtistName}" FontSize="14" />
+                            </StackLayout>
+						</StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label />
+            </ListView.Footer>
+        </ListView>
+        <Button
+            x:Name="AddSongButton"
+            Margin="0,5"
+            Text="Add Song"
+            Clicked="OnAddSongClicked"
+            Style="{StaticResource MainButtonStyle}"/>
+        <Button
+            x:Name="RmSongButton"
+            Margin="0,5"
+            Text="Remove Song"
+            Clicked="OnRemoveSongClicked"
+            Style="{StaticResource MainButtonStyle}"/>
+    </StackLayout>
+</ContentPage>

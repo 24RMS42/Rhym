@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Rhym.Login">
+        <Grid
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="80*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+            </Grid>
+            <!---FIELDS CONTAINER-->
+            <Grid 
+                Padding="40, 0"
+                Grid.Row="1"
+                VerticalOptions="Start" >
+
+                <StackLayout Orientation="Vertical">
+                    <!---EMAIL FIELD-->
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand" >
+                        <Entry
+                            Placeholder="email address"
+                            x:Name="email"
+						    Keyboard="Email"
+                            TextColor="Black"/>
+                    </StackLayout>
+
+                    <!---PASSWORD FIELD-->
+                    <StackLayout
+					    Margin="0, 10"
+                        VerticalOptions="CenterAndExpand">
+                        <Entry
+                            TextColor="Black"
+                            Placeholder="password"
+                            IsPassword="true"
+                            x:Name="password"/>
+                    </StackLayout>
+
+				    <StackLayout Orientation="Horizontal" >
+                        <Switch x:Name="RememberMeSwitch" Toggled="ClickSwitch" VerticalOptions="Center" />
+                        <Label Text="Remember me" VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <!---BUTTON FIELD-->
+                    <Button
+                        x:Name="loginButton"
+                        Margin="0,10"
+                        Text="Submit"
+					    Clicked="OnLoginButtonClicked"
+                        Style="{StaticResource MainButtonStyle}"/>
+				    <Button
+                        x:Name="signupButton"
+                        Margin="0,10"
+                        Text="Sign Up"
+                        Clicked="OnSignupButtonClicked"
+                        Style="{StaticResource MainButtonStyle}"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+</ContentPage>

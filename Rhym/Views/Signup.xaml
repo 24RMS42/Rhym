@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Rhym.Signup">
+        <Grid
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="90*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+            </Grid>
+            <Grid 
+                Padding="40, 0"
+                Grid.Row="1"
+                VerticalOptions="Start" >
+
+                <StackLayout Orientation="Vertical">
+                    <Image Source="default_photo.jpg" x:Name="PhotoImage" WidthRequest="150" HeightRequest="150" Margin="0,10" IsVisible="false" >
+    					<Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnPhotoTapped" />
+                        </Image.GestureRecognizers>
+					</Image>
+				    <StackLayout
+                        VerticalOptions="CenterAndExpand">
+                        <Entry
+                            TextColor="Black"
+                            Placeholder="First Name"
+                            x:Name="firstName"/>
+                    </StackLayout>
+				
+				    <StackLayout
+                        Margin="0, 5"
+                        VerticalOptions="CenterAndExpand">
+                        <Entry
+                            TextColor="Black"
+                            Placeholder="Last Name"
+                            x:Name="lastName"/>
+                    </StackLayout>
+				
+                    <StackLayout
+					    Margin="0, 5"
+                        VerticalOptions="CenterAndExpand" >
+                        <Entry
+                            Placeholder="email address"
+                            x:Name="email"
+                            Keyboard="Email"
+                            TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout
+                        Margin="0, 5"
+                        VerticalOptions="CenterAndExpand">
+                        <Entry
+                            TextColor="Black"
+                            Placeholder="password"
+                            IsPassword="true"
+                            x:Name="password"/>
+                    </StackLayout>
+				
+                    <Button
+                        x:Name="signupButton"
+                        Margin="0,10"
+                        Text="Sign Up"
+                        Clicked="OnSignupButtonClicked"
+                        Style="{StaticResource MainButtonStyle}"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+</ContentPage>
