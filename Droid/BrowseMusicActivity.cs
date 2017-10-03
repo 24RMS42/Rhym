@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Android.App;
@@ -22,6 +23,7 @@ namespace Rhym.Droid
 
             SetContentView(Resource.Layout.BrowseMusic);
             ListView listView = FindViewById<ListView>(Resource.Id.listview);
+            Button btnImport = FindViewById<Button>(Resource.Id.btn_add);
 
             List<SongModel> songsList;
 
@@ -48,6 +50,19 @@ namespace Rhym.Droid
 
             listView.Adapter = new SongAdapter(this, cursor, songsList);
             Console.WriteLine("songlist:" + songsList.Count);
+
+            btnImport.Click += (sender, e) => 
+            {
+                OnBackPressed();
+                App.G_SongList = new ObservableCollection<SongModel>();
+                foreach (var item in songsList)
+                {
+                    if (item.IsSelected)
+                    {
+                        App.G_SongList.Add(item);
+                    }
+                }
+            };
         }
     }
 }

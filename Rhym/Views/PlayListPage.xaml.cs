@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Rhym
@@ -13,7 +14,28 @@ namespace Rhym
         {
             InitializeComponent();
             _songList = songList;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            AddSongToPlayList();
+        }
+
+        async Task AddSongToPlayList()
+        {
+            if (App.G_SongList.Count > 0)
+            {
+                foreach (var item in App.G_SongList)
+                {
+                    _songList.Add(item);
+                }
+
+                await App.G_HTTP_CLIENT.CreatePlayListAsync(Constants.GUID, _songList);
+            }
+
             listView.ItemsSource = _songList;
+            App.G_SongList = new ObservableCollection<SongModel>();
         }
 
         public void OnItemSelected (object sender, ItemTappedEventArgs e) {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace Rhym
@@ -6,6 +7,7 @@ namespace Rhym
     public partial class App : Application
     {
         public static HttpHandler G_HTTP_CLIENT { get; set; }
+        public static ObservableCollection<SongModel> G_SongList { get; set; }
         public static string Token { get; set; }
 
         public App()
@@ -13,6 +15,7 @@ namespace Rhym
             InitializeComponent();
 
             G_HTTP_CLIENT = new HttpHandler();
+            G_SongList = new ObservableCollection<SongModel>();
 
             IDictionary<string, object> properties = Current.Properties;
             if (properties.ContainsKey(Constants.TOKEN_KEY))

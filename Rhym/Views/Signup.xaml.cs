@@ -37,10 +37,13 @@ namespace Rhym
                 if (string.IsNullOrEmpty(token))
                 {
                     PhotoImage.IsVisible = false;
+                    signupButton.Text = "Sign Up";
                 }
                 else
                 {
                     PhotoImage.IsVisible = true;
+                    signupButton.Text = "Update";
+
                     if (properties.ContainsKey(Constants.AVATAR_URL_KEY))
                     {
                         var avatar_url = properties[Constants.AVATAR_URL_KEY].ToString();
@@ -52,20 +55,20 @@ namespace Rhym
 
         public async void OnPhotoTapped(object sender, EventArgs e)
         {
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
-                return;
-            }
-            var file = await CrossMedia.Current.PickPhotoAsync();
+            //if (!CrossMedia.Current.IsPickPhotoSupported)
+            //{
+            //    await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
+            //    return;
+            //}
+            //var file = await CrossMedia.Current.PickPhotoAsync();
 
-            /*if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
                 return;
             }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions{});*/
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions{});
 
             if (file == null)
                 return;
