@@ -30,7 +30,7 @@ namespace Rhym.Droid
                     this.player.Start();
                     Console.WriteLine("android audio service started...");
                 };
-                //clicks++;
+                clicks++;
             } else if (clicks % 2 != 0) {
                 this.player.Pause();
                 clicks++;
@@ -46,6 +46,7 @@ namespace Rhym.Droid
         public bool Stop (bool val)
         {
             this.player.Stop();
+            this.player = new MediaPlayer();
             clicks = 0;
             return true;
         }

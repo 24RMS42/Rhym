@@ -27,7 +27,7 @@ namespace Rhym.iOS
                 Console.WriteLine("audio url: " + url);
                 this.player = AVPlayer.FromUrl(NSUrl.FromString(url));
                 this.player.Play();
-                //clicks++;
+                clicks++;
             }
             else if (clicks % 2 != 0)
             {
@@ -46,6 +46,7 @@ namespace Rhym.iOS
             if (player != null)
             {
                 player.Dispose();
+                this.player = new AVPlayer();
                 clicks = 0;
             }
             return true;

@@ -11,11 +11,13 @@ namespace Rhym
     {
         private ObservableCollection<SongModel> _songList;
         private ObservableCollection<SongModel> _musicList;
+        private int current_playing_index;
 
         public HomePage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            current_playing_index = -1;
         }
 
         protected async override void OnAppearing()
@@ -53,10 +55,19 @@ namespace Rhym
             (sender as ListView).SelectedItem = null;
 
             var item = e.Item as SongModel;
+            var index = (listView.ItemsSource as ObservableCollection<SongModel>).IndexOf(item);
+
+            Console.WriteLine("item index:" + index);
 
             //await CrossMediaManager.Current.Play("https://www.searchgurbani.com/audio/sggs/1.mp3");
             //await CrossMediaManager.Current.Play("http://www.bensound.org/bensound-music/bensound-tenderness.mp3");
+            if (index != current_playing_index && current_playing_index != -1)
+            {
+                DependencyService.Get<IAudio>().Stop(true);
+            }
+
             DependencyService.Get<IAudio>().Play_Pause(item.Url);
+            current_playing_index = index;
         }
 
         void OnEditButtonClicked(object sender, EventArgs args)

@@ -385,7 +385,7 @@ namespace Rhym
             Console.WriteLine("image size:" + image.Length);
             if (image.Length > 3780000)
             {
-                await UserDialogs.Instance.AlertAsync("Too large image", "Oh, sorry!", "OK");
+                await UserDialogs.Instance.AlertAsync("Too large image. We can't upload it", "Oh, sorry!", "OK");
                 return "";
             }
 
