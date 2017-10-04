@@ -41,12 +41,6 @@ namespace Rhym.Droid
                 //song_album_art.SetImageURI (albumArtUri);
             }
 
-            var songUri = ContentUris.WithAppendedId (MediaStore.Audio.Media.ExternalContentUri, songsList[cursor.Position].MusicId);
-            var albumArtUri = Android.Net.Uri.WithAppendedPath(songUri,MediaStore.Audio.Albums.EntryContentType);
-            //var path = new File(Environment.GetExternalStoragePublicDirectory)
-            Console.WriteLine("songUri:" + songUri);
-            Console.WriteLine("albumArtUri:" + albumArtUri);
-
             check_song.Tag = cursor.Position;
             check_song.SetOnCheckedChangeListener(new CheckedChangeListener(this.context));
         }

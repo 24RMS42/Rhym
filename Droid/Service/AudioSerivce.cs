@@ -19,9 +19,14 @@ namespace Rhym.Droid
         {
             Console.WriteLine("android audio service calling...: " + clicks);
             if (clicks == 0) {
+
+                if (string.IsNullOrEmpty(url))
+                    return false;
+
                 this.player = new MediaPlayer();
                 url = url.Replace(" ", "%20");
                 Console.WriteLine("android audio service calling url...: " + url);
+
                 this.player.SetDataSource(url);
                 this.player.SetAudioStreamType(Stream.Music);
                 this.player.PrepareAsync();

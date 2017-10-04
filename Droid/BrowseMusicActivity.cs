@@ -33,6 +33,7 @@ namespace Rhym.Droid
                 MediaStore.Audio.Media.InterfaceConsts.AlbumId,
                 MediaStore.Audio.Media.InterfaceConsts.Title,
                 MediaStore.Audio.Media.InterfaceConsts.Artist,
+                MediaStore.Audio.Media.InterfaceConsts.Data
             };
             var loader = new CursorLoader (this, uri, projection, null, null, null);
             var cursor = (ICursor)loader.LoadInBackground ();
@@ -43,7 +44,8 @@ namespace Rhym.Droid
                         MusicId = cursor.GetLong(cursor.GetColumnIndex(projection[0])),
                         AlbumId = cursor.GetString(cursor.GetColumnIndex(projection[1])),
                         SongName = cursor.GetString(cursor.GetColumnIndex(projection[2])),
-                        ArtistName = cursor.GetString(cursor.GetColumnIndex(projection[3]))
+                        ArtistName = cursor.GetString(cursor.GetColumnIndex(projection[3])),
+                        Url = cursor.GetString(cursor.GetColumnIndex(projection[4]))
                     });
                 } while (cursor.MoveToNext());
             }
