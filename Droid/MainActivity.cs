@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
+using HockeyApp.Android;
 
 namespace Rhym.Droid
 {
@@ -23,6 +24,7 @@ namespace Rhym.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             UserDialogs.Init(this);
+            CrashManager.Register(this, "ac6b90c34695407aa5f6061138f4516d");
 
             LoadApplication(new App());
         }
