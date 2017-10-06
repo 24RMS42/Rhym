@@ -48,6 +48,7 @@ namespace Rhym.Droid
                 {
                     if (item.IsSelected)
                     {
+                        Console.WriteLine("selected song url:" + item.Url);
                         App.G_SongList.Add(item);
                     }
                 }

@@ -40,7 +40,10 @@ namespace Rhym
         {
             get
             {
-                return Url.Contains("http");
+                if (Url == null)
+                    return false;
+                else
+                    return Url.Contains("http");
             }
         }
     }

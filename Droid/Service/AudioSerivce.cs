@@ -17,15 +17,14 @@ namespace Rhym.Droid
 
         public bool Play_Pause (string url)
         {
-            Console.WriteLine("android audio service calling...: " + clicks);
-            if (clicks == 0) {
-
-                if (string.IsNullOrEmpty(url))
+            Console.WriteLine("android audio service {0} calling...: " + url, clicks);
+            if (string.IsNullOrEmpty(url))
                     return false;
+
+            if (clicks == 0) {
 
                 this.player = new MediaPlayer();
                 url = url.Replace(" ", "%20");
-                Console.WriteLine("android audio service calling url...: " + url);
 
                 this.player.SetDataSource(url);
                 this.player.SetAudioStreamType(Stream.Music);
@@ -50,8 +49,11 @@ namespace Rhym.Droid
 
         public bool Stop (bool val)
         {
-            this.player.Stop();
-            this.player = new MediaPlayer();
+            if (this.player != null)
+            {
+                this.player.Stop();
+                this.player = new MediaPlayer();
+            }
             clicks = 0;
             return true;
         }
