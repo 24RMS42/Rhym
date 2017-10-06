@@ -59,23 +59,22 @@ namespace Rhym
 
             Console.WriteLine("item index:" + index);
 
-            //await CrossMediaManager.Current.Play("https://www.searchgurbani.com/audio/sggs/1.mp3");
-            //await CrossMediaManager.Current.Play("http://www.bensound.org/bensound-music/bensound-tenderness.mp3");
+            if (string.IsNullOrEmpty(item.Url))
+                    return;
 
             if (item.IsUrl)
             {
-                if (index != current_playing_index && current_playing_index != -1)
-                {
-                    DependencyService.Get<IAudio>().Stop(true);
-                }
+                item.Url = item.Url.Replace(" ", "%20");
+                Console.WriteLine("new url:" + item.Url);
+            }
 
-                DependencyService.Get<IAudio>().Play_Pause(item.Url);
-                current_playing_index = index;
-            }
-            else
+            if (index != current_playing_index && current_playing_index != -1)
             {
-                CrossMediaManager.Current.Play(item.Url);
+                DependencyService.Get<IAudio>().Stop(true);
             }
+
+            DependencyService.Get<IAudio>().Play_Pause(item.Url);
+            current_playing_index = index;
         }
 
         void OnEditButtonClicked(object sender, EventArgs args)
