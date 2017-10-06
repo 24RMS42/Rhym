@@ -61,13 +61,21 @@ namespace Rhym
 
             //await CrossMediaManager.Current.Play("https://www.searchgurbani.com/audio/sggs/1.mp3");
             //await CrossMediaManager.Current.Play("http://www.bensound.org/bensound-music/bensound-tenderness.mp3");
-            if (index != current_playing_index && current_playing_index != -1)
-            {
-                DependencyService.Get<IAudio>().Stop(true);
-            }
 
-            DependencyService.Get<IAudio>().Play_Pause(item.Url);
-            current_playing_index = index;
+            if (item.IsUrl)
+            {
+                if (index != current_playing_index && current_playing_index != -1)
+                {
+                    DependencyService.Get<IAudio>().Stop(true);
+                }
+
+                DependencyService.Get<IAudio>().Play_Pause(item.Url);
+                current_playing_index = index;
+            }
+            else
+            {
+                CrossMediaManager.Current.Play(item.Url);
+            }
         }
 
         void OnEditButtonClicked(object sender, EventArgs args)

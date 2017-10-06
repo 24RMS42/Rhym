@@ -25,6 +25,7 @@ namespace Rhym.Droid
 
                 this.player = new MediaPlayer();
                 url = url.Replace(" ", "%20");
+                Console.WriteLine("new url:" + url);
 
                 this.player.SetDataSource(url);
                 this.player.SetAudioStreamType(Stream.Music);
