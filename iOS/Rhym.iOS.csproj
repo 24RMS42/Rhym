@@ -162,6 +162,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Service\AudioService.cs" />
+    <Compile Include="Service\BrowseMusicService.cs" />
+    <Compile Include="BrowseMusicController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\default_photo.jpg" />

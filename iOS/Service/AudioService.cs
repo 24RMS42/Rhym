@@ -47,8 +47,8 @@ namespace Rhym.iOS
             {
                 player.Dispose();
                 this.player = new AVPlayer();
-                clicks = 0;
             }
+            clicks = 0;
             return true;
         }
     }
