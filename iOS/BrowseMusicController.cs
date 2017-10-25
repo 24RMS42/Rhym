@@ -1,8 +1,10 @@
 ﻿using System;
+using AVFoundation;
 using CoreGraphics;
 using Foundation;
 using MediaPlayer;
 using UIKit;
+using System.Linq;
 
 namespace Rhym.iOS
 {
@@ -37,12 +39,37 @@ namespace Rhym.iOS
             };
 
             View.AddSubview (btn);
+            CheckPermission();
+        }
 
+        void CheckPermission()
+        {
+            MPMediaLibraryAuthorizationStatus authorizationStatus = MPMediaLibrary.AuthorizationStatus;
+            Console.WriteLine("auth status:" + authorizationStatus);
         }
 
         void GetLocalMusic()
         {
-            MPMediaQuery mq = MPMediaQuery.PlaylistsQuery;
+              var mq = new MPMediaQuery();
+              mq.GroupingType = MPMediaGrouping.Album;
+              
+              var value = NSNumber.FromInt32((int)MPMediaType.Music);
+              var predicate = MPMediaPropertyPredicate.PredicateWithValue(value, MPMediaItem.MediaTypeProperty);
+              mq.AddFilterPredicate(predicate);
+              var items = mq.Items;
+              var secs = mq.ItemSections;
+              
+              if(secs != null)
+              {
+                 var songsFromSAlbums = 
+                    from sSection in 
+                    from sec in secs select sec
+                    from song in items.Skip((int)sSection.Range.Location).Take((int)sSection.Range.Length) select song;
+                 foreach(var song in songsFromSAlbums)
+                 {
+                    Console.WriteLine(song.Title + ": " + song.AssetURL);
+                 }
+              }
         }
     }
 }
