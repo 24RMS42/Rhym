@@ -26,6 +26,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\PlayListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GetLocalSong.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -57,6 +60,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IBrowseMusic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GetLocalSong.xaml.cs">
+      <DependentUpon>GetLocalSong.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

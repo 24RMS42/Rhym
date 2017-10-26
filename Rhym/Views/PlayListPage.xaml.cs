@@ -56,7 +56,8 @@ namespace Rhym
 
         void OnAddSongClicked(object sender, EventArgs args)
         {
-           DependencyService.Get<IBrowseMusic>().BrowseMusic();
+            //DependencyService.Get<IBrowseMusic>().BrowseMusic();
+            Navigation.PushAsync(new GetLocalSong());
         }
 
         async void OnRemoveSongClicked(object sender, EventArgs args)
