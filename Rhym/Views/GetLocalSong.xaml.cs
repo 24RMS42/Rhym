@@ -56,6 +56,7 @@ namespace Rhym
             catch (Exception ex)
             {
                 Console.WriteLine("check permission exception:" + ex);
+                return;
             }
         }
 
