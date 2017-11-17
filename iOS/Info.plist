@@ -11,7 +11,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -19,7 +19,6 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -51,5 +50,7 @@
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>use media library</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>calendar</string>
 </dict>
 </plist>

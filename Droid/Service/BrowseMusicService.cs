@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Android.Content;
 using Rhym.Droid;
 using Xamarin.Forms;
@@ -16,6 +17,11 @@ namespace Rhym.Droid
         {
             Forms.Context.StartActivity(typeof(BrowseMusicActivity));
             return true;
+        }
+
+        public ObservableCollection<SongModel> GetLocalMusic()
+        {
+            throw new NotImplementedException();
         }
     }
 }
