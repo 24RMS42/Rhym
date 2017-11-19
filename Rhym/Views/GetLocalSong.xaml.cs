@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Acr.UserDialogs;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
@@ -14,11 +15,13 @@ namespace Rhym
         {
             InitializeComponent();
             CheckPermission();
+        }
 
+        void GetLocalMusic()
+        {
             if (_songList == null)
                 _songList = DependencyService.Get<IBrowseMusic>().GetLocalMusic();
-            
-            Console.WriteLine("song count:" + _songList.Count);
+
             if (_songList != null)
                 listView.ItemsSource = _songList;
             else
@@ -34,7 +37,8 @@ namespace Rhym
                 {
                     if(await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.MediaLibrary))
                     {
-                        await DisplayAlert("Need permission", "Rhym needs media permission", "OK");
+                        //await DisplayAlert("Need permission", "Rhym needs media permission", "OK");
+                        UserDialogs.Instance.Toast("Rhym needs media permission");
                     }
 
                     var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.MediaLibrary);
@@ -45,18 +49,18 @@ namespace Rhym
 
                 if (status == PermissionStatus.Granted)
                 {
-                    
+                    GetLocalMusic();
                 }
                 else if(status != PermissionStatus.Unknown)
                 {
-                    await DisplayAlert("Permission denied", "Please enable media library permission", "OK");
-                    return;
+                    UserDialogs.Instance.Toast("Please enable media library permission on Settings app");
+                    //await DisplayAlert("Permission denied", "Please enable media library permission on Settings app", "OK");
                 }
             }
             catch (Exception ex)
             {
+                UserDialogs.Instance.Toast("Unknow exception");
                 Console.WriteLine("check permission exception:" + ex);
-                return;
             }
         }
 
